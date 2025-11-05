@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoveLingo - Fall in Love with Learning Languages</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer src="https://umami.leanderziehm.com/script.js" data-website-id="487a96de-7a2b-4179-bc4f-02d3eeee07a2"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setDomains", ["*.lovelingo.leanderziehm.com","*.lovelingo-chat.leanderziehm.com","*.lovelingo-game.leanderziehm.com"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//matomo.leanderziehm.com/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '3']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//matomo.leanderziehm.com/matomo.php?idsite=3&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #ff6b8a;
+            --secondary-color: #ff8fab;
+            --accent-color: #ffb3c1;
+            --dark-color: #2c2c54;
+            --light-color: #fff;
+            --gradient: linear-gradient(135deg, #ff6b8a 0%, #ff8fab 50%, #ffb3c1 100%);
+            --shadow: 0 20px 40px rgba(255, 107, 138, 0.2);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        /* Particle Animation */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            animation: float 6s infinite linear;
+            opacity: 0.7;
+              animation-fill-mode: backwards;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(1000px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--light-color);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--light-color);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-cta {
+            background: var(--light-color);
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            animation: fadeInUp 1s ease-out 0.6s both;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 25px 50px rgba(255, 107, 138, 0.3);
+        }
+
+        /* Animated Heart */
+        .heart {
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 200px;
+            height: 200px;
+            animation: heartbeat 3s infinite;
+        }
+   @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14%      { transform: scale(1.3); }
+    28%      { transform: scale(1); }
+    42%      { transform: scale(1.5); }
+    70%      { transform: scale(1); }
+}
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 5rem 2rem;
+            background: var(--light-color);
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .pain-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pain-point {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .pain-point:hover {
+            transform: translateY(-10px);
+        }
+
+        .pain-point i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light-color);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Waitlist Form */
+        .waitlist {
+            padding: 5rem 2rem;
+            background: var(--gradient);
+            color: var(--light-color);
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--light-color);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-container h2 {
+            color: var(--dark-color);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            background: var(--gradient);
+            color: var(--light-color);
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Social Proof */
+        .social-proof {
+            padding: 5rem 2rem;
+            background: var(--light-color);
+            text-align: center;
+        }
+
+        .testimonial {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 20px;
+            font-style: italic;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-color);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+        }
+
+        /* Incentives */
+        .incentives {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+        }
+
+        .perks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .perk {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .perk:hover {
+            transform: translateY(-10px);
+        }
+
+        .perk i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #ff8fabda;
+            color: var(--light-color);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--light-color);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--light-color);
+            padding: 3rem;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .modal-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .close-modal {
+            background: var(--gradient);
+            color: var(--light-color);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .heart {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- <div class="heart"></div> -->
+           <img  class="heart" src="apple-touch-icon.png " alt="heart" style="display: inline-block;">
+
+        <div class="hero-content">
+            <h1>Fall in Love with Learning Languages</h1>
+            <!-- apple-touch-icon.png -->
+           
+
+            <p>Join the waitlist for LoveLingo - the romance game that makes you fluent through dating, adventures, and real conversations. Get early access and shape the future of language learning!</p>
+            <a href="#waitlist" class="hero-cta">Start Your Love Story 💕</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <h2 class="section-title">Tired of Learning Languages Like It's Homework?</h2>
+            <div class="pain-points">
+                <div class="pain-point">
+                    <i class="fas fa-sad-tear"></i>
+                    <h3>3 years of German classes, still can't order Bier 🍺</h3>
+                    <p>Traditional methods focus on grammar drills instead of real conversation skills</p>
+                </div>
+                <div class="pain-point">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Duolingo streaks but zero speaking confidence</h3>
+                    <p>Apps teach vocabulary but leave you speechless in real situations</p>
+                </div>
+                <div class="pain-point">
+                    <i class="fas fa-book"></i>
+                    <h3>Grammar drills that feel like punishment</h3>
+                    <p>Learning shouldn't be boring - it should be exciting and emotional!</p>
+                </div>
+            </div>
+            <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: 600;">You want to connect, flirt, and live in your new language - not just memorize verb tables.</p>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+        <div class="container">
+            <h2 class="section-title">What If Learning Felt Like Your Favorite Romance Game?</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">💕</div>
+                    <h3>Date in Your Target Language</h3>
+                    <p>Practice through romantic scenarios that make your heart race</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Voice-Controlled Adventures</h3>
+                    <p>Speak to navigate your virtual world and control the story</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🗣️</div>
+                    <h3>Real Conversation Practice</h3>
+                    <p>AI tutors who respond to your actual voice with instant feedback</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📈</div>
+                    <h3>Confidence Building</h3>
+                    <p>Safe space to make mistakes and improve without embarrassment</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Real-World Scenarios</h3>
+                    <p>Oktoberfest, job interviews, café dates - practice what matters</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Form -->
+    <section class="waitlist" id="waitlist">
+        <div class="container">
+            <h2 class="section-title">Secure Your Early Access</h2>
+            <div class="form-container">
+                <h2>Join the LoveLingo Romance! 💖</h2>
+                <form id="waitlistForm">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="language">Which language are you most excited to learn? *</label>
+                        <select id="language" name="language" required>
+                            <option value="">Choose your romance language</option>
+                            <option value="german">German 🇩🇪</option>
+                            <option value="spanish">Spanish 🇪🇸</option>
+                            <option value="chinese">Chinese 🇨🇳</option>
+                            <option value="hindi">Hindi 🇮🇳</option>
+                            <option value="english">English 🇺🇸</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="level">What's your current level?</label>
+                        <select id="level" name="level">
+                            <option value="beginner">Complete beginner</option>
+                            <option value="basics">Some basics</option>
+                            <option value="reading">Can read but can't speak</option>
+                            <option value="intermediate">Intermediate</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="frustration">What's your biggest language learning frustration?</label>
+                        <select id="frustration" name="frustration">
+                            <option value="anxiety">Speaking anxiety</option>
+                            <option value="practice">No conversation practice</option>
+                            <option value="boring">Boring methods</option>
+                            <option value="pronunciation">Pronunciation</option>
+                        </select>
+                    </div>
+                    <button id="submit-btn" type="submit" class="submit-btn">Secure My Early Access 🚀</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+ <div style="text-align: center;">
+  <img src="qrcode.png" alt="QR Code" style="display: inline-block; max-width: 800px; width: 100%; height: auto;">
+</div>
+  
+    <!-- Incentives Section -->
+    <section class="incentives">
+        <div class="container">
+            <h2 class="section-title">Early Access Perks</h2>
+            <div class="perks">
+             
+                <div class="perk">
+                    <i class="fas fa-crown"></i>
+                    <h3>Founder's Badge</h3>
+                    <p>Special status in your profile</p>
+                </div>
+                   <div class="perk">
+                    <i class="fas fa-gift"></i>
+                    <h3>Free Premium Pack</h3>
+                    <p>Exclusive storyline worth $9.99</p>
+                </div>
+                       <div class="perk">
+                    <i class="fas fa-users"></i>
+                    <h3>Direct Access</h3>
+                    <p>Chat directly with our team</p>
+                </div>
+                <div class="perk">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Exclusive Outfits</h3>
+                    <p>Unique character customizations</p>
+                </div>
+         
+            </div>
+            <p style="text-align: center; margin-top: 2rem; font-size: 1.1rem; color: var(--primary-color); font-weight: 600;">
+                Limited Beta Spots Available - Secure Yours Now!
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h3>Built by Language Learners, For Language Learners</h3>
+            <p>We're AI students who've struggled to speak at visa offices, failed to flirt in foreign countries, and felt the frustration of textbook learning. We're building the tool we wished existed.</p>
+            <p style="margin-top: 2rem; opacity: 0.7;">© 2025 LoveLingo. Made with 💕 for language lovers.</p>
+        </div>
+    </footer>
+
+    <!-- Thank You Modal -->
+    <div class="modal" id="thankYouModal">
+        <div class="modal-content">
+            <h2>Welcome to the LoveLingo Family! 💕</h2>
+            <p>You're now on the exclusive waitlist. We'll send you development updates, beta access, and maybe some language learning tips that don't suck.</p>
+            <p><strong>Next Steps:</strong></p>
+            <ul style="text-align: left; margin: 1rem 0;">
+                <li>Check your email for confirmation</li>
+                <li>Follow us on social media</li>
+                <li>Share with friends to move up the waitlist</li>
+            </ul>
+            <button id="close-modal" class="close-modal"">Start the Romance! 🚀</button>
+         
+
+        </div>
+    </div>
+
+    <script>
+
+     // document.getElementById("close-modal").addEventListener()  //document.
+ //       document.getElementById("close-modal").addEventListener((event,g)=> {
+      
+   //         console.log("window location")
+     //       window.location = "https://lovelingo-chat.leanderziehm.com/"
+       // })
+document.getElementById("close-modal").addEventListener("click", (event) => {
+    console.log("window location");
+    window.location = "https://lovelingo-game.leanderziehm.com/";
+   // "https://lovelingo-chat.leanderziehm.com/";
+});
+
+
+        // onclick="closeModal()
+        // Particle Animation
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.innerHTML = '💕';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            particle.style.animationDelay = Math.random() * 2 + 's';
+            
+            document.getElementById('particles').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 8000);
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 2000);
+
+        // Form submission
+ /*       document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would normally send the data to your backend
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            console.log('Form submitted:', data);
+            
+            // Show thank you modal
+            document.getElementById('thankYouModal').style.display = 'flex';
+            
+            // Reset form
+            this.reset();
+        }); */
+
+   
+document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+    console.log("submited form data",data)
+
+    try {
+        const response = await fetch('/api/waitlist', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            console.log("ok")
+            // Show thank you modal
+            document.getElementById('thankYouModal').style.display = 'flex';
+            this.reset();
+        } else {
+            // Handle validation or conflict error
+            alert(result.message || 'Submission failed. Please try again.');
+        }
+
+    } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('Something went wrong. Please try again.');
+    }
+});
+
+
+
+
+        function closeModal() {
+            document.getElementById('thankYouModal').style.display = 'none';
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.feature, .pain-point, .perk');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Set initial styles for animation
+        document.querySelectorAll('.feature, .pain-point, .perk').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'all 0.6s ease';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on load
+
+        // Create more variety in particles
+        const heartEmojis = ['💕', '💖', '💗', '💓', '💝', '❤️', '🧡', '💛'];
+        
+        function createVariedParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.innerHTML = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.fontSize = (Math.random() * 1 + 1) + 'rem';
+            particle.style.animationDuration = (Math.random() * 4 + 5) + 's';
+            particle.style.animationDelay = Math.random() * 2 + 's';
+            
+            document.getElementById('particles').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 10000);
+        }
+
+        // Replace the simple particle creation with varied ones
+        setInterval(createVariedParticle, 1500);
+    </script>
+</body>
+</html>
