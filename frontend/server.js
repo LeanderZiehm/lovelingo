@@ -5,7 +5,7 @@ const rateLimit = require('express-rate-limit');
 const path = require('path');
 require('dotenv').config();
 
-const waitlistRoutes = require('./routes/waitlist');
+// const waitlistRoutes = require('./routes/waitlist');
 const { errorHandler, notFound } = require('./middleware/errorHandler');
 
 const app = express();
@@ -51,7 +51,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
-app.use('/api/waitlist', formLimiter, waitlistRoutes);
+// app.use('/api/waitlist', formLimiter, waitlistRoutes);
 
 
 // Serve the landing page
