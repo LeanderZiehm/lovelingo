@@ -6,7 +6,7 @@ services:
       context: ./chat
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "5010:5010"
     env_file:
       - ./chat/.env
     volumes:
@@ -17,7 +17,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "3001:3001"
+      - "5009:5009"
     env_file:
       - ./frontend/.env
     volumes:
