@@ -31,3 +31,21 @@ services:
     volumes:
       - ./game:/app
       - /app/node_modules
+
+  database:
+    image: postgres:18
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+    volumes:
+      - "postgres_data2:/var/lib/postgresql/18/docker"
+    restart: always
+
+volumes:
+  postgres_data2:
+    name: postgres_data2
+
+networks:
+  postgres:
+    driver: bridge

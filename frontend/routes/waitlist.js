@@ -85,6 +85,8 @@ router.post('/', async (req, res) => {
   }
 });
 
+
+// TODO SEND WEBHOOK TO N8N FOR IT
 // GET /api/waitlist/stats - Get waitlist statistics (optional)
 router.get('/stats', async (req, res) => {
   try {
