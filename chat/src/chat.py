@@ -41,11 +41,6 @@ def get_groq():
 def get_elevenlabs():
     return ElevenLabs(api_key=get_elevenlabs_api_key())
 
-
-@chat_bp.route("/chat", methods=["GET"])
-def chat_get():
-    return render_template("chat.html")
-
 # todo add cashing of audo files if same text is requested
 @chat_bp.route("/tts", methods=["POST"])
 def tts():
@@ -84,15 +79,17 @@ def chat():
     )
     reply = resp.choices[0].message.content
 
-    # 2️⃣ Generate ElevenLabs TTS stream
-    audio_stream = get_elevenlabs().text_to_speech.stream(
-        text=reply, voice_id=VOICE_ID, model_id="eleven_multilingual_v2"
-    )
+    # # 2️⃣ Generate ElevenLabs TTS stream
+    # audio_stream = get_elevenlabs().text_to_speech.stream(
+    #     text=reply, voice_id=VOICE_ID, model_id="eleven_multilingual_v2"
+    # )
 
-    def generate():
-        for chunk in audio_stream:
-            if isinstance(chunk, bytes):
-                yield chunk
+    # def generate():
+    #     for chunk in audio_stream:
+    #         if isinstance(chunk, bytes):
+    #             yield chunk
 
-    headers = {"X-Reply-Text": reply.replace("\n", " ")}
-    return Response(generate(), mimetype="audio/mpeg", headers=headers)
+    # headers = {"X-Reply-Text": reply.replace("\n", " ")}
+    # return Response(generate(), mimetype="audio/mpeg", headers=headers)
+
+    return reply

@@ -840,7 +840,7 @@
 
         showTyping();
 
-        const resp = await fetch("/chat", {
+        const response = await fetch("/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: text }),
@@ -848,17 +848,18 @@
 
         hideTyping();
 
-        if (!resp.ok) {
-          console.error(await resp.text());
-          appendMessage(
+        if (response.ok) {
+          const responseText = await response.text();          
+          appendMessage("bot", responseText);    
+        }else{
+           appendMessage(
             "bot",
             "Sorry, there was an error processing your message."
           );
-          return;
         }
 
-        const replyText = resp.headers.get("X-Reply-Text") || "Bot response";
-        appendMessage("bot", replyText);
+        // const replyText = resp.headers.get("X-Reply-Text") || "Bot response";
+       
 
         // Don't auto-play audio anymore - user will click speaker button if they want to hear it
       }
