@@ -18,7 +18,7 @@ app.register_blueprint(key_bp)  # Register the key management blueprint
 
 @app.route("/")
 def index():
-    return render_template("chat_v2.html")
+    return render_template("chat.html")
 
 @app.route("/key")
 def key_management1():
@@ -28,11 +28,6 @@ def key_management1():
 @app.route("/keys")
 def key_management2():
     return render_template("key_management.html")
-
-@app.route("/v1")
-def v1():
-    return render_template("chat_v1.html")
-
 
 @app.route("/call")
 def call():
